@@ -1,0 +1,18 @@
+version: "3.1"
+
+services:
+  db:
+    image: postgres:13
+    container_name: ntt_data_postgres_db
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: DBNTTDATATECHNICALTESTLF
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+volumes:
+  pgdata:
